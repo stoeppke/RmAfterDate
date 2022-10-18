@@ -1,3 +1,13 @@
 #!/bin/bash
-launchctl load /Library/LaunchDaemons/com.knowunity.dev.pkg.RmAfterDate.plist
+#make script executable (again?)
+chmod +x /Library/Knowunity/DeleatByDate.py
+
+# create destination dir on desktop
+mkdir ~/Desktop/TMP_DeleateByDate_YYYY-MM-DD/
+
+#move launchd plist to users LaunchDeamon dir
+mv /tmp/com.knowunity.dev.pkg.RmAfterDate.plist ~/Library/LaunchDaemons/com.knowunity.dev.pkg.RmAfterDate.plist
+
+# activate launchd job
+launchctl load ~/Library/LaunchDaemons/com.knowunity.dev.pkg.RmAfterDate.plist
 launchctl start com.knowunity.dev.pkg.RmAfterDate

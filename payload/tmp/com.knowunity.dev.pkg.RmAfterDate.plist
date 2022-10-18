@@ -2,11 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Program</key>
+	<string>/Library/Knowunity/DeleatByDate.py</string>
 	<key>ProgramArguments</key>
 	<array>
 		<!-- Path to  RmAfterDate.py file-->
-		<string>/Library/Knowunity/DeleatByDate.sh</string>
-		<string>/Users/philipp.stoeppke/Desktop/TMP_DeleateByDate_YYYY-MM-DD/</string>
+		<string>~/Desktop/TMP_DeleateByDate_YYYY-MM-DD/</string>
 		<!-- <string>/Users/stoeppke/Desktop/TMP_DeleateByDate_YYYY-MM-DD/</string> -->
 	</array>
 	<key>Label</key>
