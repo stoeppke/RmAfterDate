@@ -2,22 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Program</key>
-	<string>/Library/Knowunity/DeleatByDate.py</string>
-	<key>ProgramArguments</key>
-	<array>
-		<!-- Path to  RmAfterDate.py file-->
-		<string>~/Desktop/TMP_DeleateByDate_YYYY-MM-DD/</string>
-		<!-- <string>/Users/stoeppke/Desktop/TMP_DeleateByDate_YYYY-MM-DD/</string> -->
-	</array>
 	<key>Label</key>
 	<string>com.knowunity.dev.pkg.RmAfterDate</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/local/bin/python3</string>
+		<string>/Library/Knowunity/RmAfterDate.py</string>
+		<string>~/Desktop/DeleateByDate_YYYY-MM-DD/</string>
+	</array>
 	<key>StartCalendarInterval</key>
 	<dict>
-		<key>Minute</key>
-		<integer>59</integer>
 		<key>Hour</key>
 		<integer>23</integer>
+		<key>Minute</key>
+		<integer>59</integer>
 	</dict>
+	<key>StartInterval</key>
+	<integer>60</integer>
 </dict>
 </plist>
