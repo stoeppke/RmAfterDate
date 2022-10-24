@@ -44,7 +44,7 @@ if __name__ == '__main__':
                 raise Exception(f'{path} does not exist')
             # check every subfolder in path
             # list all subfolders in path with absolute path
-            subfolders = [f.path for f in os.scandir(path) if f.is_dir()]
+            subfolders = [f.path for f in os.scandir(path)]
             for subfolder in subfolders:
                 if os.path.isdir(subfolder) or os.path.isfile(subfolder):
                     if check_if_to_keep(subfolder):
