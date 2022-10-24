@@ -53,5 +53,9 @@ if __name__ == '__main__':
                         print(f"delete: {subfolder}")
                         # if argument dry set to false then delete file or folder
                         if not args.dry:
-                            pass
-                            shutil.rmtree(subfolder)
+                            # if subfolder is a file then delete file with os.remove
+                            if os.path.isfile(subfolder):
+                                os.remove(subfolder)
+                                # if subfolder is a folder then delete folder with shutil.rmtree
+                            elif os.path.isdir(subfolder):
+                                shutil.rmtree(subfolder)
