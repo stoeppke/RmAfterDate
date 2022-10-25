@@ -20,7 +20,7 @@ A launchd daemon called ```com.knowunity.dev.pkg.RmAfterDate``` is started under
 ## Build
 To build the .pkg file run:
 ```bash
-git clone __THIS_REPO__
+git clone https://github.com/stoeppke/RmAfterDate
 git clone https://github.com/munki/munki-pkg.git
-./munki-pkg/munkipkg ./__THIS_REPO__/
+./munki-pkg/munkipkg ./RmAfterDate
 ```
