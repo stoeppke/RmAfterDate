@@ -1,0 +1,45 @@
+#!/bin/bash
+UID_=$(id -u $USER)
+
+# create destination dir on desktop
+if [ ! -d $HOME/Desktop/DeleateByDate_YYYY-MM-DD ]; then
+	mkdir $HOME/Desktop/DeleateByDate_YYYY-MM-DD
+	chown -R $USER:staff $HOME/Desktop/DeleateByDate_YYYY-MM-DD
+fi
+
+chmod 755 $HOME/Desktop/DeleateByDate_YYYY-MM-DD
+chmod -R 755 /Library/Knowunity/
+
+# create LaunchAgents dir if not exists
+if [ ! -d $HOME/Library/LaunchAgents ]; then
+	mkdir $HOME/Library/LaunchAgents
+fi
+
+# check if script was already installed and remove it
+launchctl list | grep com.knowunity.dev.pkg.RmAfterDate
+if [ $? -eq 0 ]; then
+	launchctl bootout gui/$UID_/com.knowunity.dev.pkg.RmAfterDate
+	rm $HOME/Library/LaunchAgents/com.knowunity.dev.pkg.RmAfterDate.plist
+	#DEBUG
+	echo "DEBUG: Script was already installed. Removed."
+fi
+
+# move launchd script to users LaunchAgents dir
+mv /tmp/com.knowunity.dev.pkg.RmAfterDate.plist $HOME/Library/LaunchAgents/com.knowunity.dev.pkg.RmAfterDate.plist
+chown $USER:staff $HOME/Library/LaunchAgents/com.knowunity.dev.pkg.RmAfterDate.plist
+chmod 644 $HOME/Library/LaunchAgents/com.knowunity.dev.pkg.RmAfterDate.plist
+
+#DEBUG
+echo "DEBUG: mv done"
+echo $USER
+id -u $USER
+
+echo $UID_
+# activate launchd job
+launchctl bootstrap gui/$UID_/ $HOME/Library/LaunchAgents/com.knowunity.dev.pkg.RmAfterDate.plist
+#DEBUG
+echo "DEBUG: launchctl bootstrap done"
+
+launchctl enable gui/$UID_/com.knowunity.dev.pkg.RmAfterDate
+#DEBUG
+echo "DEBUG: launchctl enable done"

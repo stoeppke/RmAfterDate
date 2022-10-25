@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/local/bin/python3
 from datetime import datetime
 import os
 import argparse
@@ -44,7 +44,7 @@ if __name__ == '__main__':
                 raise Exception(f'{path} does not exist')
             # check every subfolder in path
             # list all subfolders in path with absolute path
-            subfolders = [f.path for f in os.scandir(path) if f.is_dir()]
+            subfolders = [f.path for f in os.scandir(path)]
             for subfolder in subfolders:
                 if os.path.isdir(subfolder) or os.path.isfile(subfolder):
                     if check_if_to_keep(subfolder):
@@ -53,5 +53,9 @@ if __name__ == '__main__':
                         print(f"delete: {subfolder}")
                         # if argument dry set to false then delete file or folder
                         if not args.dry:
-                            pass
-                            shutil.rmtree(subfolder)
+                            # if subfolder is a file then delete file with os.remove
+                            if os.path.isfile(subfolder):
+                                os.remove(subfolder)
+                                # if subfolder is a folder then delete folder with shutil.rmtree
+                            elif os.path.isdir(subfolder):
+                                shutil.rmtree(subfolder)
