@@ -22,5 +22,5 @@ To build the .pkg file run:
 ```bash
 git clone https://github.com/stoeppke/RmAfterDate
 git clone https://github.com/munki/munki-pkg.git
-./munki-pkg/munkipkg ./RmAfterDate
+python3 ./munki-pkg/munkipkg ./RmAfterDate
 ```
