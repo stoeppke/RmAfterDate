@@ -58,4 +58,4 @@ if __name__ == '__main__':
                                 os.remove(subfolder)
                                 # if subfolder is a folder then delete folder with shutil.rmtree
                             elif os.path.isdir(subfolder):
-                                shutil.rmtree(subfolder)
+                                shutil.rmtree(subfolder, ignore_errors=True)
